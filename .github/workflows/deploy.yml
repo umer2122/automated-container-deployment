@@ -47,4 +47,4 @@ jobs:
         run: docker build -t myflaskapp ./app
 
       - name: Run Docker Container
-        run: docker run -d -p 80:80 myflaskapp
+        run: docker run -d -p 5000:5000 myflaskapp
