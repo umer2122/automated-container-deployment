@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "eu-north-1"
 }
 
 resource "aws_security_group" "web_sg" {
@@ -9,7 +9,7 @@ resource "aws_security_group" "web_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["YOUR_PUBLIC_IP/32"]
+    cidr_blocks = ["13.62.104.49/32"]
   }
 
   ingress {
