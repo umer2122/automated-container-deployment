@@ -41,7 +41,7 @@ jobs:
 
       - name: Run Ansible Playbook
         run: |
-          ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ansible/inventory.ini ansible/install_docker1.yml
+          ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ansible/inventory.ini ansible/install_docker.yml
         
       - name: Build Docker Image
         run: docker build -t myflaskapp ./app
