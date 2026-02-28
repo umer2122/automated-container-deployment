@@ -40,7 +40,8 @@ jobs:
           sudo apt install -y ansible sshpass
 
       - name: Run Ansible Playbook
-        run: ansible-playbook -i ansible/inventory.ini ansible/install_docker.yml
+        run: |
+          ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ansible/inventory.ini ansible/install_docker1.yml
         
       - name: Build Docker Image
         run: docker build -t myflaskapp ./app
