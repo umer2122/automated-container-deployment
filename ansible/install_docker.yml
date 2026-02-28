@@ -37,4 +37,4 @@
         image: nginx
         state: started
         ports:
-          - "5000:5000"
+          - "80:80"
