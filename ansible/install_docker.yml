@@ -3,38 +3,27 @@
 
   tasks:
 
-    - name: Update apt packages
+    - name: Install Docker
       apt:
+        name: docker.io
+        state: present
         update_cache: yes
 
-    - name: Install required packages
-      apt:
-        name:
-          - docker.io
-          - python3-docker
-        state: present
+    - name: Copy App Files
+      copy:
+        src: ../app/
+        dest: /home/ubuntu/myapp/
+        mode: '0755'
 
-    - name: Start Docker service
-      systemd:
-        name: docker
-        state: started
-        enabled: yes
+    - name: Build Docker Image
+      command: docker build -t my-flask-app /home/ubuntu/myapp
 
-    - name: Add ubuntu user to docker group
-      user:
-        name: ubuntu
-        groups: docker
-        append: yes
-
-    - name: Pull nginx image
-      docker_image:
-        name: nginx
-        source: pull
-
-    - name: Run nginx container
+    - name: Run Docker Container
       docker_container:
-        name: mynginx
-        image: nginx
+        name: flask-container
+        image: my-flask-app
         state: started
+        recreate: yes
+        restart_policy: always
         ports:
           - "5000:5000"
