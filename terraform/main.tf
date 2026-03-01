@@ -2,9 +2,8 @@ provider "aws" {
   region = "eu-north-1"
 }
 
-resource "aws_security_group" "web_sg" {
-  name        = "web_sg-${random_id.sg_id.hex}"
-  description = "Security group for web server"
+resource "aws_security_group" "flask_sg" {
+  name = "flask-sg"
 
   ingress {
     from_port   = 5000
@@ -14,8 +13,8 @@ resource "aws_security_group" "web_sg" {
   }
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -26,8 +25,4 @@ resource "aws_security_group" "web_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
-resource "random_id" "sg_id" {
-  byte_length = 2
 }
