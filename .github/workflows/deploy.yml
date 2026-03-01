@@ -47,6 +47,9 @@ jobs:
           sudo apt update
           sudo apt install -y ansible sshpass
 
+      - name: Clean unused Docker data
+        command: docker system prune -af
+
       - name: Run Ansible Playbook
         run: |
           ansible-playbook -i ansible/inventory.ini ansible/install_docker.yml
