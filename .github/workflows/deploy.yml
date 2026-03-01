@@ -26,6 +26,9 @@ jobs:
       - name: Terraform Init
         run: cd terraform && terraform init
 
+      - name: Terraform Destroy (cleanup old infra)
+        run: cd terraform && terraform destroy -auto-approve || true
+
       - name: Terraform Apply
         run: cd terraform && terraform apply -auto-approve
 
@@ -55,4 +58,4 @@ jobs:
         run: docker build -t my-flask-app ./app
 
       - name: Run Docker Container
-        run: docker run -d -p 5000:5000 my-flask-app
+        run: docker run -d -p 80:5000 my-flask-app
