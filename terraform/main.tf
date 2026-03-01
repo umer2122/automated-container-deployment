@@ -2,6 +2,11 @@ provider "aws" {
   region = "eu-north-1"
 }
 
+root_block_device {
+  volume_size = 20
+  volume_type = "gp2"
+}
+
 resource "aws_security_group" "flask_sg" {
   name_prefix = "flask-sg-"
 
