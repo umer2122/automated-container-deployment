@@ -31,4 +31,7 @@ resource "aws_security_group" "flask_sg" {
     volume_size = 20
     volume_type = "gp3"
   }
+    tags = {
+    Name = "Flask-Automated-Server"
+  }
 }
