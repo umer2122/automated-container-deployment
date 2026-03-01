@@ -34,6 +34,11 @@ jobs:
           echo "${{ secrets.AWS_SSH_KEY }}" > key.pem
           chmod 600 key.pem
 
+      - name: Add EC2 to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 13.62.104.49 >> ~/.ssh/known_hosts
+
       - name: Install Ansible
         run: |
           sudo apt update
