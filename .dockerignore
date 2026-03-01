@@ -1,0 +1,10 @@
+.git
+.terraform
+terraform
+ansible
+.github
+kp.pem
+*.tf
+*.tfstate
+*.tfstate.*
+__pycache__
