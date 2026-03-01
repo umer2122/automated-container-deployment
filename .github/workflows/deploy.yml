@@ -52,7 +52,7 @@ jobs:
           ansible-playbook -i ansible/inventory.ini ansible/install_docker.yml
 
       - name:  Puts Image on EC2 instance.
-        run: scp -i key.pem -r . ubuntu@13.62.104.49:/home/ubuntu/myapp
+        run: scp -i key.pem -r ./app/* ubuntu@13.62.104.49:/home/ubuntu/myapp
         
       - name: Build Docker Image
         run: docker build -t my-flask-app ./app
