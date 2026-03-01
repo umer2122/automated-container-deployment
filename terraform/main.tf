@@ -26,12 +26,4 @@ resource "aws_security_group" "flask_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-    ebs_block_device {
-    device_name = "/dev/sda1"
-    volume_size = 20
-    volume_type = "gp3"
-  }
-    tags = {
-    Name = "Flask-Automated-Server"
-  }
 }
